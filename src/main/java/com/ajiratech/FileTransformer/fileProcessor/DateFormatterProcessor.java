@@ -32,11 +32,11 @@ public class DateFormatterProcessor  implements ICsvProcessor{
 			for(int i =1;i<rows.size();i++) {
 				String[] r = rows.get(i);
 				 String[] arr = new String[r.length];
-				 arr[0]  = r[0];
+				 arr[i]  = r[i];
 			     Date date = new SimpleDateFormat(inputDateFormat).parse(r[targetColumn]);  
 			     DateFormat dateFormat = new SimpleDateFormat(outputDateFormat);  
 				 String strDate = dateFormat.format(date);
-				 arr[1]  = strDate;
+				 arr[targetColumn]  = strDate;
 				 newRows.add(arr);
 			}
 			
