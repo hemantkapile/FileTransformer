@@ -16,10 +16,10 @@ import org.springframework.stereotype.Component;
 import com.opencsv.CSVWriter;
 
 @Component
-public class StudentProcessor  implements ICsvProcessor{
+public class DateFormatterProcessor  implements ICsvProcessor{
 	
 	@Override
-	public String transform(String inputFile,String outputFile) {
+	public List<String[]> transform(String inputFile,int targetColumn,String inputDateFormat,String outputDateFormat) {
 		
 		List<String[]> newRows =  new ArrayList<>();
 		try {
@@ -27,37 +27,24 @@ public class StudentProcessor  implements ICsvProcessor{
 			          Files.lines(Paths.get(inputFile))
 			                .map(line -> line.split("\\|"))
 			                .collect(Collectors.toList());
-			String[] header = {"name","dob"};
-			newRows.add(header);
+			newRows.add(rows.get(0));
 			
 			for(int i =1;i<rows.size();i++) {
 				String[] r = rows.get(i);
-				 String[] arr = new String[2];
+				 String[] arr = new String[r.length];
 				 arr[0]  = r[0];
-			     Date date = new SimpleDateFormat("yyyy-MM-dd").parse(r[1]);  
-			     DateFormat dateFormat = new SimpleDateFormat("MMM d, YYYY");  
+			     Date date = new SimpleDateFormat(inputDateFormat).parse(r[targetColumn]);  
+			     DateFormat dateFormat = new SimpleDateFormat(outputDateFormat);  
 				 String strDate = dateFormat.format(date);
 				 arr[1]  = strDate;
 				 newRows.add(arr);
 			}
-			File file = new File(outputFile);
-			 file = file.getParentFile();	
-			 if(!file.exists()){
-				file.mkdir();
-				System.out.println("New output dir created at "+file.getAbsolutePath());
-			 }
-		
-			CSVWriter writer = new CSVWriter(new FileWriter(outputFile),'|',CSVWriter.NO_QUOTE_CHARACTER,
-                    CSVWriter.DEFAULT_ESCAPE_CHARACTER,
-                    CSVWriter.DEFAULT_LINE_END);
-			writer.writeAll(newRows);
-			writer.close();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "Something went Wrong";
 			
 		}
-		return "Data Generated successfully. View the file at "+outputFile;
+		return newRows;
 		
 	}
 }

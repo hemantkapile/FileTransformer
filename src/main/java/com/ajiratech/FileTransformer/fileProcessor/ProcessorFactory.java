@@ -7,28 +7,28 @@ import org.springframework.stereotype.Component;
 public class ProcessorFactory {
 	
 	@Autowired
-	private FriendsProcessor friendsProcessor;
+	private AgeFilterProcessor ageFilterProcessor;
 	@Autowired
-	private EmployeesProcessor employeesProcessor;
+	private ColumnMergerProcessor columnMergerProcessor;
 	@Autowired
-	private StudentProcessor studentProcessor;
+	private DateFormatterProcessor dateFormatterProcessor;
 	@Autowired
-	private PeopleProcessor peopleProcessor;
+	private NewColumnProcessor newColumnProcessor;
 	
 	public ICsvProcessor getProcessor(String sourceType) {
 		ICsvProcessor csvProcessor= null;
 		switch (sourceType) {
-		case "Friends.csv":
-			csvProcessor = friendsProcessor;
+		case "AGE_FILTER":
+			csvProcessor = ageFilterProcessor;
 			break;
-		case "Employees.csv":
-			csvProcessor = employeesProcessor;
+		case "COLUMN_MERGER":
+			csvProcessor = columnMergerProcessor;
 			break;
-		case "Students.csv":
-			csvProcessor = studentProcessor;
+		case "DATE_FORMATTER":
+			csvProcessor = dateFormatterProcessor;
 			break;
-		case "People.csv":
-			csvProcessor = peopleProcessor;
+		case "NEW_COLUMN":
+			csvProcessor = newColumnProcessor;
 			break;
 		default:
 			break;

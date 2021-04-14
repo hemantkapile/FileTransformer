@@ -1,0 +1,2 @@
+Module|Age Column Index|Age,PassValue,FailValue|New Column Name
+NEW_COLUMN|2|18,T,F|eligible_for_voting

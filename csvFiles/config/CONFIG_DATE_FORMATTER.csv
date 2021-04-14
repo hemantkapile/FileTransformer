@@ -1,0 +1,2 @@
+Module|TargetColumn Index|InputDate Format|OutputDate Format
+DATE_FORMATTER|2|yyyy-MM-dd|MMM d, YYYY
