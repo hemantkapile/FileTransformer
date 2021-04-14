@@ -1,11 +1,13 @@
-1. In order to exceute the jar please go to following path:
-	FileTransformer/target
-2. on cmd on the above path and execeute below  sample commands :
+1. Download the project by using clone option.
+2. Ensure you have atleast Java 8 and maven installed in your machine, you can import the project as a maven project.
+3. In order to create & exceute the jar please go to following path:
+	FileTransformer
+4. open cmd here exceute "mvnw package" and after successful exceution of the command under FileTransformer/target "FileTransformer-0.0.1-SNAPSHOT.jar" would have been generated.
+5. Then go to FileTransformer/target on cmd and exceute below sample commands :
 java -jar FileTransformer-0.0.1-SNAPSHOT.jar --inputFile=E:\Java\csvFiles\Friends.csv --configFile=E:\Java\csvFiles\config\CONFIG_AGE_FILTER.csv --outputFile=E:\Java\csvFiles\Output\Friends.csv
 java -jar FileTransformer-0.0.1-SNAPSHOT.jar --inputFile=E:\Java\csvFiles\Employees.csv --configFile=E:\Java\csvFiles\config\CONFIG_COLUMN_MERGER.csv --outputFile=E:\Java\csvFiles\Output\Employees.csv
 java -jar FileTransformer-0.0.1-SNAPSHOT.jar --inputFile=E:\Java\csvFiles\People.csv --configFile=E:\Java\csvFiles\config\CONFIG_NEW_COLUMN.csv --outputFile=E:\Java\csvFiles\Output\People.csv
 java -jar FileTransformer-0.0.1-SNAPSHOT.jar --inputFile=E:\Java\csvFiles\Students.csv --configFile=E:\Java\csvFiles\config\CONFIG_DATE_FORMATTER.csv --outputFile=E:\Java\csvFiles\Output\Students.csv
-
 
 Note : 
 1. Please change inputFile, configFile, outputFile path according to the available location of file
